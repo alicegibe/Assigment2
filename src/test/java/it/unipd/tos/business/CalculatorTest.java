@@ -53,6 +53,20 @@ public class CalculatorTest {
         tot = bill.getOrderPrice(list,user);
 
         assertEquals(13.50,tot,Diff);
-    }
+    }  
+	//test 5 gelati 
+	@Test
+	public void discount50Test() throws TakeAwayBillException {
+		list.add(new MenuItem(MenuItem.type.Gelato,"Cioccolatomaxi",7.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Stracciatella",1.50));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Cioccolato",2.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Mirtillomaxi",7.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Vaniglia",2.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Caramello",2.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Fragola",2.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"Limone",2.00));
+		tot = bill.getOrderPrice(list, user);
+		assertEquals(24.75,tot,Diff);
+	}
 	
 }
