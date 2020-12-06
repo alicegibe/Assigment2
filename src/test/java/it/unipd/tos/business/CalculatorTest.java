@@ -78,7 +78,15 @@ public class CalculatorTest {
 		list.add(new MenuItem(MenuItem.type.Bevanda,"Fanta",2.50));
 		tot = bill.getOrderPrice(list, user);
 		assertEquals(54.45,tot,Diff);
+		} 
+	//test 30 elementi 
+	@Test(expected = TakeAwayBillException.class) 
+	public void max30Test() throws TakeAwayBillException {
+		for(int i=0; i<40; i++) {
+			list.add(new MenuItem(MenuItem.type.Budino,"Cioccolato",8.00));
 		}
+		tot = bill.getOrderPrice(list,user);
+	}
 	
 	
 	

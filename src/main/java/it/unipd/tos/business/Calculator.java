@@ -26,6 +26,10 @@ public class Calculator implements TakeAwayBill {
         if (items.contains(null)) {
             throw new TakeAwayBillException("Nella lista è presente un elemento vuoto");
         }
+        //issue 4
+        if (items.size() > 30) {
+            throw new TakeAwayBillException("La lista ha più 30 elementi");
+        }
 
        
 
@@ -54,7 +58,9 @@ public class Calculator implements TakeAwayBill {
         if (gelatibudini > 50) {
         
         tot = tot*0.9;
-        }
+        } 
+        
+        
         
         
        
