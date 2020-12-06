@@ -58,7 +58,11 @@ public class Calculator implements TakeAwayBill {
         if (gelatibudini > 50) {
         
         tot = tot*0.9;
-        } 
+        }  
+        //issue 5 
+        if(tot<10) {
+        tot +=0.50;
+        }
         
         
         

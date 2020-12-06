@@ -86,6 +86,13 @@ public class CalculatorTest {
 			list.add(new MenuItem(MenuItem.type.Budino,"Cioccolato",8.00));
 		}
 		tot = bill.getOrderPrice(list,user);
+	} 
+	//test commissione 0.50
+	@Test
+	public void plus050Test() throws TakeAwayBillException {
+		list.add(new MenuItem(MenuItem.type.Bevanda,"The",2.50));
+		tot = bill.getOrderPrice(list, user);
+		assertEquals(3,tot,Diff);
 	}
 	
 	
