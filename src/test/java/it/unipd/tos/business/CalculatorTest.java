@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalTime;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import it.unipd.tos.model.MenuItem;
 import it.unipd.tos.model.User;
 import it.unipd.tos.business.exception.TakeAwayBillException;
+import it.unipd.tos.business.RandomFree;
 
 public class CalculatorTest {
 	
@@ -94,7 +96,28 @@ public class CalculatorTest {
 		tot = bill.getOrderPrice(list, user);
 		assertEquals(3,tot,Diff);
 	}
-	
-	
-	
+	//assegnazione Random
+	@Test
+	public void freeBillsTest() throws TakeAwayBillException {
+		User user = null;
+		List<RandomFree> orders = new ArrayList<RandomFree>();
+		list.add(new MenuItem(MenuItem.type.Gelato,"Cioccolato",7.00));
+		for(int i=0; i<18; i++) {
+			user = new User("Alice","Gibellato",i);
+			orders.add(new RandomFree(list,user,LocalTime.of(18, 07, 33),bill.getOrderPrice(list, user)));
+		}
+		List<RandomFree> free = bill.FreeBills(orders);
+		boolean b = false;
+		if(free.size()<=10) {
+			b = true;
+		}	
+		assertEquals(true,b);
+		for(RandomFree i: free) {
+			assertEquals(0.00,i.getPrice(),Diff);
+		}
+	}
 }
+	
+	
+	
+
