@@ -67,6 +67,19 @@ public class CalculatorTest {
 		list.add(new MenuItem(MenuItem.type.Gelato,"Limone",2.00));
 		tot = bill.getOrderPrice(list, user);
 		assertEquals(24.75,tot,Diff);
-	}
+	} 
+	//10% sconto se +€50
+	@Test 
+	public void discount10Test() throws TakeAwayBillException {
+		list.add(new MenuItem(MenuItem.type.Budino,"Cioccolato",8.00));
+		list.add(new MenuItem(MenuItem.type.Budino,"Panna",10.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"BananaSplit",15.00));
+		list.add(new MenuItem(MenuItem.type.Gelato,"CoppaAmarena",25.00));
+		list.add(new MenuItem(MenuItem.type.Bevanda,"Fanta",2.50));
+		tot = bill.getOrderPrice(list, user);
+		assertEquals(54.45,tot,Diff);
+		}
+	
+	
 	
 }

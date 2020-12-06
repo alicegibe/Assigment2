@@ -14,6 +14,7 @@ public class Calculator implements TakeAwayBill {
         double tot = 0.0;   
         int numgelati=0;
         MenuItem icecreamlessprice=null;
+        double gelatibudini = 0.0;
        
         
        
@@ -31,18 +32,30 @@ public class Calculator implements TakeAwayBill {
         //costo totale
         for(MenuItem i: items) {
         tot +=i.getPrice();
-        if (i.getItem() == MenuItem.type.Gelato) { //conto gelati
-            numgelati++;
-           
+        if (i.getItem() == MenuItem.type.Gelato) { 
+            numgelati++;  //conto gelati
+            gelatibudini += i.getPrice();  // sommo prezzo gelato
             if ((icecreamlessprice == null) || (icecreamlessprice.getPrice() > i.getPrice())) { //assegno gelato costo minimo
                 icecreamlessprice = i;
+            }}
+            if (i.getItem() == MenuItem.type.Budino) {
+                gelatibudini += i.getPrice();   //sommo prezzo budino 
             }
-        }
-        
+            
+            
         } 
+   
+        
+         //issue 2
         if (numgelati > 5) {
             tot -= icecreamlessprice.getPrice() * 0.5;
+        } 
+        //issue 3
+        if (gelatibudini > 50) {
+        
+        tot = tot*0.9;
         }
+        
         
        
 
